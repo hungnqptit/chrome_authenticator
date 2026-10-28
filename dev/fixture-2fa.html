@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two-factor authentication — fixture</title>
+  <script src="/dev/mock-chrome.js"></script>
+  <style>
+    body { font: 15px/1.5 system-ui, sans-serif; background: #f6f8fa; margin: 0; }
+    .box { max-width: 340px; margin: 60px auto; background: #fff; border: 1px solid #d0d7de; border-radius: 8px; padding: 24px; }
+    h1 { font-size: 20px; margin: 0 0 8px; }
+    input { width: 100%; box-sizing: border-box; padding: 8px; font-size: 16px; border: 1px solid #d0d7de; border-radius: 6px; }
+    button { margin-top: 12px; width: 100%; padding: 8px; background: #1f883d; color: #fff; border: 0; border-radius: 6px; font-size: 15px; }
+    #result { margin-top: 10px; color: #57606a; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Two-factor authentication</h1>
+    <p>Open your authenticator app and enter the code.</p>
+    <form id="f">
+      <label for="app_totp">Authentication code</label>
+      <input id="app_totp" name="app_otp" autocomplete="one-time-code" inputmode="numeric" maxlength="6" placeholder="XXXXXX">
+      <button type="submit">Verify</button>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script>
+    document.getElementById('app_totp').addEventListener('input', (e) => {
+      document.getElementById('result').textContent = `input event → value "${e.target.value}"`;
+    });
+    document.getElementById('f').addEventListener('submit', (e) => e.preventDefault());
+  </script>
+  <script src="/extension/content/content.js"></script>
+</body>
+</html>

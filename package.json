@@ -1,0 +1,10 @@
+{
+  "name": "chrome-authenticator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node dev/test.mjs",
+    "dev": "python3 dev/serve.py 8765",
+    "icons": "python3 dev/make_icons.py"
+  }
+}
